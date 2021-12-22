@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ES6部分知识点总结 | WebCoder</title>
+    <meta name="description" content="Something Good Will Be Happen!">
+    <link rel="icon" href="/logo.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#3eaf7c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-152x152.png">
+  <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#3eaf7c">
+  <meta name="msapplication-TileImage" content="/icons/msapplication-icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/assets/css/0.styles.e9601a0f.css" as="style"><link rel="preload" href="/assets/js/app.6aa71e18.js" as="script"><link rel="preload" href="/assets/js/20.646646e8.js" as="script"><link rel="prefetch" href="/assets/js/2.0acebc94.js"><link rel="prefetch" href="/assets/js/3.a6860445.js"><link rel="prefetch" href="/assets/js/4.062059eb.js"><link rel="prefetch" href="/assets/js/5.c429bb8c.js"><link rel="prefetch" href="/assets/js/6.d128dc6e.js"><link rel="prefetch" href="/assets/js/7.cbba3ae8.js"><link rel="prefetch" href="/assets/js/8.3c6dc26f.js"><link rel="prefetch" href="/assets/js/9.cfd13805.js"><link rel="prefetch" href="/assets/js/10.e35277f4.js"><link rel="prefetch" href="/assets/js/11.705f9ff8.js"><link rel="prefetch" href="/assets/js/12.cb41ee43.js"><link rel="prefetch" href="/assets/js/13.41a18b7e.js"><link rel="prefetch" href="/assets/js/14.e3f76a17.js"><link rel="prefetch" href="/assets/js/15.e1f9e6a4.js"><link rel="prefetch" href="/assets/js/16.7b107a33.js"><link rel="prefetch" href="/assets/js/17.5c8b104d.js"><link rel="prefetch" href="/assets/js/18.af2929fc.js"><link rel="prefetch" href="/assets/js/19.b9785ceb.js"><link rel="prefetch" href="/assets/js/21.ec6d4d4b.js"><link rel="prefetch" href="/assets/js/22.4ccec226.js"><link rel="prefetch" href="/assets/js/23.9937204e.js"><link rel="prefetch" href="/assets/js/24.01d73bb3.js"><link rel="prefetch" href="/assets/js/25.da968f5d.js"><link rel="prefetch" href="/assets/js/26.b218202b.js"><link rel="prefetch" href="/assets/js/27.e1017f61.js"><link rel="prefetch" href="/assets/js/28.08b2495a.js"><link rel="prefetch" href="/assets/js/29.ef1026b4.js"><link rel="prefetch" href="/assets/js/30.cb8b0704.js"><link rel="prefetch" href="/assets/js/31.99c0e8a4.js"><link rel="prefetch" href="/assets/js/32.949d2f08.js"><link rel="prefetch" href="/assets/js/33.ef14c555.js"><link rel="prefetch" href="/assets/js/34.5d0aff86.js"><link rel="prefetch" href="/assets/js/35.7946d01d.js"><link rel="prefetch" href="/assets/js/36.a2ec7073.js"><link rel="prefetch" href="/assets/js/37.d822e6ba.js"><link rel="prefetch" href="/assets/js/38.4eaedf76.js"><link rel="prefetch" href="/assets/js/39.1dfd2114.js"><link rel="prefetch" href="/assets/js/40.8c86d158.js"><link rel="prefetch" href="/assets/js/41.40f73d3f.js"><link rel="prefetch" href="/assets/js/42.bc9d61d5.js"><link rel="prefetch" href="/assets/js/43.6904307b.js"><link rel="prefetch" href="/assets/js/44.f649f7a2.js"><link rel="prefetch" href="/assets/js/45.710693b4.js"><link rel="prefetch" href="/assets/js/46.4b2e8ff4.js"><link rel="prefetch" href="/assets/js/47.5fa2d420.js"><link rel="prefetch" href="/assets/js/48.772d62a6.js"><link rel="prefetch" href="/assets/js/49.6d3f5d32.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e9601a0f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">WebCoder</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">FrontEnd</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/js/" class="nav-link router-link-active">JS</a></li><li class="dropdown-item"><!----> <a href="/css/" class="nav-link">CSS</a></li><li class="dropdown-item"><!----> <a href="/react/" class="nav-link">React</a></li><li class="dropdown-item"><!----> <a href="/vue/" class="nav-link">Vue</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Tool</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/echarts/" class="nav-link">Echarts</a></li></ul></div></div><div class="nav-item"><a href="/other/" class="nav-link">Others</a></div><div class="nav-item"><a href="/about/" class="nav-link">About</a></div> <a href="https://github.com/dvxiaofan" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">FrontEnd</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/js/" class="nav-link router-link-active">JS</a></li><li class="dropdown-item"><!----> <a href="/css/" class="nav-link">CSS</a></li><li class="dropdown-item"><!----> <a href="/react/" class="nav-link">React</a></li><li class="dropdown-item"><!----> <a href="/vue/" class="nav-link">Vue</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Tool</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/echarts/" class="nav-link">Echarts</a></li></ul></div></div><div class="nav-item"><a href="/other/" class="nav-link">Others</a></div><div class="nav-item"><a href="/about/" class="nav-link">About</a></div> <a href="https://github.com/dvxiaofan" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav> <div class="carbon-ads"></div> <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>JavaScript</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/js/" class="sidebar-link">JS重点基础知识记录</a></li><li><a href="/js/js02.html" class="active sidebar-link">ES6部分知识点总结</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/js/js02.html#var、let-及-const-区别" class="sidebar-link">var、let 及 const 区别</a></li><li class="sidebar-sub-header"><a href="/js/js02.html#原型继承和-class-继承" class="sidebar-link">原型继承和 Class 继承</a></li><li class="sidebar-sub-header"><a href="/js/js02.html#模块化" class="sidebar-link">模块化</a></li><li class="sidebar-sub-header"><a href="/js/js02.html#proxy" class="sidebar-link">Proxy</a></li><li class="sidebar-sub-header"><a href="/js/js02.html#map-filter-reduce" class="sidebar-link">map, filter, reduce</a></li></ul></li><li><a href="/js/js03.html" class="sidebar-link">JS异步相关</a></li><li><a href="/js/js04.html" class="sidebar-link">手写Promise</a></li><li><a href="/js/js05.html" class="sidebar-link">Event Loop</a></li><li><a href="/js/js06.html" class="sidebar-link">JavaScript-作用域是什么</a></li><li><a href="/js/fileSave.html" class="sidebar-link">使用FileSaver.js把base64数据转成表格并下载</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="es6部分知识点总结"><a href="#es6部分知识点总结" aria-hidden="true" class="header-anchor">#</a> ES6部分知识点总结</h1> <h2 id="var、let-及-const-区别"><a href="#var、let-及-const-区别" aria-hidden="true" class="header-anchor">#</a> var、let 及 const 区别</h2> <p>我们先来了解提升（<code>hoisting</code>）这个概念。</p> <div class="language- extra-class"><pre class="language-text"><code>console.log(a) // undefined
+var a = 1
+</code></pre></div><p>从上述代码中我们可以发现，虽然变量还没有被声明，但是我们却可以使用这个未被声明的变量，这种情况就叫做提升，并且提升的是声明。</p> <p>对于这种情况，我们可以把代码这样来看</p> <div class="language- extra-class"><pre class="language-text"><code>var a
+console.log(a) // undefined
+a = 1
+
+</code></pre></div><p>接下来我们再来看一个例子</p> <div class="language- extra-class"><pre class="language-text"><code>var a = 10
+var a[README](media/README.md)
+console.log(a)
+</code></pre></div><p>对于这个例子，如果你认为打印的值为 <code>undefined</code> 那么就错了，答案应该是 10，对于这种情况，我们这样来看代码</p> <div class="language- extra-class"><pre class="language-text"><code>var a
+var a
+a = 10
+console.log(a)
+</code></pre></div><p>到这里为止，我们已经了解了 <code>var</code> 声明的变量会发生提升的情况，其实不仅变量会提升函数也会被提升。</p> <div class="language- extra-class"><pre class="language-text"><code>console.log(a) // ƒ a() {}
+function a() {}
+var a = 1
+</code></pre></div><p>对于上述代码，打印结果会是 <code>ƒ a() {}</code>，即使变量声明在函数之后，这也说明了函数会被提升，并且优先于变量提升。</p> <p>说完了这些，想必也知道 <code>var</code> 存在的问题了，使用 <code>var</code> 声明的变量会被提升到作用域的顶部，接下来我们再来看 <code>let</code> 和 <code>const</code> 。</p> <p>我们先来看一个例子：</p> <div class="language- extra-class"><pre class="language-text"><code>var a = 1
+let b = 1
+const c = 1
+console.log(window.b) // undefined
+console.log(window. c) // undefined
+
+function test(){
+  console.log(a)
+  let a
+}
+test()
+</code></pre></div><p>首先在全局作用域下使用 <code>let</code> 和 <code>const</code> 声明变量，变量并不会被挂载到 <code>window</code> 上，这一点就和 <code>var</code> 声明有了区别。</p> <p>再者当我们在声明 <code>a</code> 之前如果使用了 <code>a</code>，就会出现报错的情况</p> <p><img src="http://imgs.webxiaofan.com/15467609246417.jpg" alt></p> <p>你可能会认为这里也出现了提升的情况，但是因为某些原因导致不能访问。</p> <p>首先报错的原因是因为存在暂时性死区，我们不能在声明前就使用变量，这也是 <code>let</code> 和 <code>const</code> 优于 <code>var</code> 的一点。然后这里你认为的提升和 <code>var</code> 的提升是有区别的，虽然变量在编译的环节中被告知在这块作用域中可以访问，但是访问是受限制的。</p> <p>那么到这里，想必我们也都明白 <code>var</code>、<code>let</code> 及 <code>const</code> 区别了，不知道你是否会有这么一个疑问，为什么要存在提升这个事情呢，其实提升存在的根本原因就是为了解决函数间互相调用的情况</p> <div class="language- extra-class"><pre class="language-text"><code>function test1() {
+    test2()
+}
+function test2() {
+    test1()
+}
+test1()
+</code></pre></div><p>假如不存在提升这个情况，那么就实现不了上述的代码，因为不可能存在 <code>test1</code> 在 <code>test2</code> 前面然后 <code>test2</code> 又在 <code>test1</code> 前面。</p> <p>那么最后我们总结下这小节的内容：</p> <ul><li>函数提升优先于变量提升，函数提升会把整个函数挪到作用域顶部，变量提升只会把声明挪到作用域顶部</li> <li><code>var</code> 存在提升，我们能在声明之前使用。<code>let</code>、<code>const</code> 因为暂时性死区的原因，不能在声明前使用</li> <li><code>var</code> 在全局作用域下声明变量会导致变量挂载在 <code>window</code> 上，其他两者不会</li> <li><code>let</code> 和 <code>const</code> 作用基本一致，但是后者声明的变量不能再次赋值</li></ul> <h2 id="原型继承和-class-继承"><a href="#原型继承和-class-继承" aria-hidden="true" class="header-anchor">#</a> 原型继承和 Class 继承</h2> <p>首先先来看下 <code>class</code>，其实在 <code>JS</code> 中并不存在类，<code>class</code> 只是语法糖，本质还是函数。</p> <div class="language- extra-class"><pre class="language-text"><code>class Person {}
+Person instanceof Function // true
+</code></pre></div><p>在之前我们了解了原型的知识点，这里我们将会使用分别使用原型和 <code>class</code> 的方式来实现继承。</p> <h3 id="组合继承"><a href="#组合继承" aria-hidden="true" class="header-anchor">#</a> 组合继承</h3> <p>组合继承是最常用的继承方式，</p> <div class="language- extra-class"><pre class="language-text"><code>function Parent(value) {
+  this.val = value
+}
+Parent.prototype.getValue = function() {
+  console.log(this.val)
+}
+function Child(value) {
+  Parent.call(this, value)
+}
+Child.prototype = new Parent()
+
+const child = new Child(1)
+
+child.getValue() // 1
+child instanceof Parent // true
+</code></pre></div><p>以上继承的方式核心是在子类的构造函数中通过 <code>Parent.call(this)</code> 继承父类的属性，然后改变子类的原型为 <code>new Parent()</code> 来继承父类的函数。</p> <p>这种继承方式优点在于构造函数可以传参，不会与父类引用属性共享，可以复用父类的函数，但是也存在一个缺点就是在继承父类函数的时候调用了父类构造函数，导致子类的原型上多了不需要的父类属性，存在内存上的浪费。</p> <p><img src="http://imgs.webxiaofan.com/15467612528823.jpg" alt></p> <h3 id="寄生组合继承"><a href="#寄生组合继承" aria-hidden="true" class="header-anchor">#</a> 寄生组合继承</h3> <p>这种继承方式对组合继承进行了优化，组合继承缺点在于继承父类函数时调用了构造函数，我们只需要优化掉这点就行了。</p> <div class="language- extra-class"><pre class="language-text"><code>function Parent(value) {
+  this.val = value
+}
+Parent.prototype.getValue = function() {
+  console.log(this.val)
+}
+
+function Child(value) {
+  Parent.call(this, value)
+}
+Child.prototype = Object.create(Parent.prototype, {
+  constructor: {
+    value: Child,
+    enumerable: false,
+    writable: true,
+    configurable: true
+  }
+})
+
+const child = new Child(1)
+
+child.getValue() // 1
+child instanceof Parent // true
+</code></pre></div><p>以上继承实现的核心就是将父类的原型赋值给了子类，并且将构造函数设置为子类，这样既解决了无用的父类属性问题，还能正确的找到子类的构造函数。</p> <p><img src="http://imgs.webxiaofan.com/15467613259047.jpg" alt></p> <h3 id="class-继承"><a href="#class-继承" aria-hidden="true" class="header-anchor">#</a> Class 继承</h3> <p>以上两种继承方式都是通过原型去解决的，在 <code>ES6</code> 中，我们可以使用 <code>class</code> 去实现继承，并且实现起来很简单</p> <div class="language- extra-class"><pre class="language-text"><code>class Parent {
+  constructor(value) {
+    this.val = value
+  }
+  getValue() {
+    console.log(this.val)
+  }
+}
+class Child extends Parent {
+  constructor(value) {
+    super(value)
+    this.val = value
+  }
+}
+let child = new Child(1)
+child.getValue() // 1
+child instanceof Parent // true
+</code></pre></div><p><code>class</code> 实现继承的核心在于使用 <code>extends</code> 表明继承自哪个父类，并且在子类构造函数中必须调用 <code>super</code>，因为这段代码可以看成 <code>Parent.call(this, value)</code>。</p> <p>当然了，之前也说了在 <code>JS</code> 中并不存在类，<code>class</code> 的本质就是函数。</p> <h2 id="模块化"><a href="#模块化" aria-hidden="true" class="header-anchor">#</a> 模块化</h2> <p>模块化可以给我们带来以下好处</p> <ul><li>解决命名冲突</li> <li>提供复用性</li> <li>提高代码可维护性</li></ul> <h3 id="立即执行函数"><a href="#立即执行函数" aria-hidden="true" class="header-anchor">#</a> 立即执行函数</h3> <p>在早期，使用立即执行函数实现模块化是常见的手段，通过函数作用域解决了命名冲突、污染全局作用域的问题</p> <div class="language- extra-class"><pre class="language-text"><code>(function(globalVariable){
+   globalVariable.test = function() {}
+   // ... 声明各种变量、函数都不会污染全局作用域
+})(globalVariable)
+</code></pre></div><h3 id="amd-和-cmd"><a href="#amd-和-cmd" aria-hidden="true" class="header-anchor">#</a> AMD 和 CMD</h3> <p>鉴于目前这两种实现方式已经很少见到，所以不再对具体特性细聊，只需要了解这两者是如何使用的。</p> <div class="language- extra-class"><pre class="language-text"><code>// AMD
+define(['./a', './b'], function(a, b) {
+  // 加载模块完毕可以使用
+  a.do()
+  b.do()
+})
+// CMD
+define(function(require, exports, module) {
+  // 加载模块
+  // 可以把 require 写在函数体的任意地方实现延迟加载
+  var a = require('./a')
+  a.doSomething()
+})
+</code></pre></div><h3 id="commonjs"><a href="#commonjs" aria-hidden="true" class="header-anchor">#</a> CommonJS</h3> <p><code>CommonJS</code> 最早是 <code>Node</code> 在使用，目前也仍然广泛使用，比如在 <code>Webpack</code> 中你就能见到它，当然目前在 <code>Node</code> 中的模块管理已经和 <code>CommonJS</code> 有一些区别了。</p> <div class="language- extra-class"><pre class="language-text"><code>// a.js
+module.exports = {
+    a: 1
+}
+// or 
+exports.a = 1
+
+// b.js
+var module = require('./a.js')
+module.a // -&gt; log 1
+</code></pre></div><p>因为 <code>CommonJS</code> 还是会使用到的，所以这里会对一些疑难点进行解析</p> <p>先说 <code>require</code> 吧</p> <div class="language- extra-class"><pre class="language-text"><code>var module = require('./a.js')
+module.a 
+// 这里其实就是包装了一层立即执行函数，这样就不会污染全局变量了，
+// 重要的是 module 这里，module 是 Node 独有的一个变量
+module.exports = {
+    a: 1
+}
+// module 基本实现
+var module = {
+  id: 'xxxx', // 我总得知道怎么去找到他吧
+  exports: {} // exports 就是个空对象
+}
+// 这个是为什么 exports 和 module.exports 用法相似的原因
+var exports = module.exports 
+var load = function (module) {
+    // 导出的东西
+    var a = 1
+    module.exports = a
+    return module.exports
+};
+// 然后当我 require 的时候去找到独特的
+// id，然后将要使用的东西用立即执行函数包装下，over
+</code></pre></div><p>另外虽然 <code>exports</code> 和 <code>module.exports</code> 用法相似，但是不能对 <code>exports</code> 直接赋值。因为 <code>var exports = module.exports</code> 这句代码表明了 <code>exports</code> 和 <code>module.exports</code> 享有相同地址，通过改变对象的属性值会对两者都起效，但是如果直接对 <code>exports</code> 赋值就会导致两者不再指向同一个内存地址，修改并不会对 <code>module.exports</code> 起效。</p> <h3 id="es-module"><a href="#es-module" aria-hidden="true" class="header-anchor">#</a> ES Module</h3> <p><code>ES Module</code> 是原生实现的模块化方案，与 <code>CommonJS</code> 有以下几个区别</p> <ul><li><code>CommonJS</code> 支持动态导入，也就是 <code>require(${path}/xx.js)</code>，后者目前不支持，但是已有提案</li> <li><code>CommonJS</code> 是同步导入，因为用于服务端，文件都在本地，同步导入即使卡住主线程影响也不大。而后者是异步导入，因为用于浏览器，需要下载文件，如果也采用同步导入会对渲染有很大影响</li> <li><code>CommonJS</code> 在导出时都是值拷贝，就算导出的值变了，导入的值也不会改变，所以如果想更新值，必须重新导入一次。但是 <code>ES Module</code> 采用实时绑定的方式，导入导出的值都指向同一个内存地址，所以导入值会跟随导出值变化</li> <li><code>ES Module</code> 会编译成 <code>require/exports</code> 来执行的</li></ul> <div class="language- extra-class"><pre class="language-text"><code>// 引入模块 API
+import XXX from './a.js'
+import { XXX } from './a.js'
+// 导出模块 API
+export function a() {}
+export default function() {}
+</code></pre></div><h2 id="proxy"><a href="#proxy" aria-hidden="true" class="header-anchor">#</a> Proxy</h2> <p>如果你平时有关注 <code>Vue</code> 的进展的话，可能已经知道了在 <code>Vue3.0</code> 中将会通过 <code>Proxy</code> 来替换原本的 <code>Object.defineProperty</code> 来实现数据响应式。 <code>Proxy</code> 是 <code>ES6</code> 中新增的功能，它可以用来自定义对象中的操作。</p> <div class="language- extra-class"><pre class="language-text"><code>let p = new Proxy(target, handler)
+</code></pre></div><p><code>target</code> 代表需要添加代理的对象，<code>handler</code> 用来自定义对象中的操作，比如可以用来自定义 <code>set</code> 或者 <code>get</code> 函数。</p> <p>接下来我们通过 <code>Proxy</code> 来实现一个数据响应式</p> <div class="language- extra-class"><pre class="language-text"><code>let onWatch = (obj, setBind, getLogger) =&gt; {
+  let handler = {
+    get(target, property, receiver) {
+      getLogger(target, property)
+      return Reflect.get(target, property, receiver)
+    },
+    set(target, property, value, receiver) {
+      setBind(value, property)
+      return Reflect.set(target, property, value)
+    }
+  }
+  return new Proxy(obj, handler)
+}
+
+let obj = { a: 1 }
+let p = onWatch(
+  obj,
+  (v, property) =&gt; {
+    console.log(`监听到属性${property}改变为${v}`)
+  },
+  (target, property) =&gt; {
+    console.log(`'${property}' = ${target[property]}`)
+  }
+)
+p.a = 2 // 监听到属性a改变2
+p.a // 'a' = 2
+</code></pre></div><p>在上述代码中，我们通过自定义 <code>set</code> 和 <code>get</code> 函数的方式，在原本的逻辑中插入了我们的函数逻辑，实现了在对对象任何属性进行读写时发出通知。</p> <p>当然这是简单版的响应式实现，如果需要实现一个 <code>Vue</code> 中的响应式，需要我们在 <code>get</code> 中收集依赖，在 <code>set</code> 派发更新，之所以 <code>Vue3.0</code> 要使用 <code>Proxy</code> 替换原本的 <code>API</code> 原因在于 <code>Proxy</code> 无需一层层递归为每个属性添加代理，一次即可完成以上操作，性能上更好，并且原本的实现有一些数据更新不能监听到，但是 <code>Proxy</code> 可以完美监听到任何方式的数据改变，唯一缺陷可能就是浏览器的兼容性不好了。</p> <h2 id="map-filter-reduce"><a href="#map-filter-reduce" aria-hidden="true" class="header-anchor">#</a> map, filter, reduce</h2> <p><code>map</code> 作用是生成一个新数组，遍历原数组，将每个元素拿出来做一些变换然后放入到新的数组中。</p> <div class="language- extra-class"><pre class="language-text"><code>[1, 2, 3].map(v =&gt; v + 1) // -&gt; [2, 3, 4]
+</code></pre></div><p>另外 <code>map</code> 的回调函数接受三个参数，分别是 当前索引元素，索引，原数组</p> <div class="language- extra-class"><pre class="language-text"><code>['1','2','3'].map(parseInt)
+第一轮遍历 parseInt('1', 0) -&gt; 1
+第二轮遍历 parseInt('2', 1) -&gt; NaN
+第三轮遍历 parseInt('3', 2) -&gt; NaN
+</code></pre></div><p><code>filter</code> 的作用也是生成一个新数组，在遍历数组的时候将返回值为 <code>true</code> 的元素放入新数组，我们可以利用这个函数删除一些不需要的元素</p> <div class="language- extra-class"><pre class="language-text"><code>let array = [1, 2, 4, 6]
+let newArray = array.filter(item =&gt; item !== 6)
+console.log(newArray) // [1, 2, 4]
+</code></pre></div><p>和 <code>map</code> 一样，<code>filter</code> 的回调函数也接受三个参数，用处也相同。</p> <p>最后我们来学习 <code>reduce</code> 这块的内容，同时也是最难理解的一块内容。<code>reduce</code> 可以将数组中的元素通过回调函数最终转换为一个值。</p> <p>如果我们想实现一个功能将函数里的元素全部相加得到一个值，可能会这样写代码</p> <div class="language- extra-class"><pre class="language-text"><code>const arr = [1, 2, 3]
+let total = 0
+for (let i = 0; i &lt; arr.length; i++) {
+  total += arr[i]
+}
+console.log(total) //6 
+</code></pre></div><p>但是如果我们使用 <code>reduce</code> 的话就可以将遍历部分的代码优化为一行代码</p> <div class="language- extra-class"><pre class="language-text"><code>const arr = [1, 2, 3]
+const sum = arr.reduce((acc, current) =&gt; acc + current, 0)
+console.log(sum)
+</code></pre></div><p>对于 <code>reduce</code> 来说，它接受两个参数，分别是回调函数和初始值，接下来我们来分解上述代码中 <code>reduce</code> 的过程</p> <ul><li>首先初始值为 <code>0</code>，该值会在执行第一次回调函数时作为第一个参数传入</li> <li>回调函数接受四个参数，分别为累计值、当前元素、当前索引、原数组，后三者想必大家都可以明白作用，这里着重分析第一个参数</li> <li>在一次执行回调函数时，当前值和初始值相加得出结果 <code>1</code>，该结果会在第二次执行回调函数时当做第一个参数传入</li> <li>所以在第二次执行回调函数时，相加的值就分别是 <code>1</code> 和 <code>2</code>，以此类推，循环结束后得到结果 <code>6</code></li></ul> <p>想必通过以上的解析大家应该明白 <code>reduce</code> 是如何通过回调函数将所有元素最终转换为一个值的，当然 <code>reduce</code> 还可以实现很多功能，接下来我们就通过 <code>reduce</code> 来实现 <code>map</code> 函数</p> <div class="language- extra-class"><pre class="language-text"><code>const arr = [1, 2, 3]
+const mapArray = arr.map(value =&gt; value * 2)
+const reduceArray = arr.reduce((acc, current) =&gt; {
+  acc.push(current * 2)
+  return acc
+}, [])
+console.log(mapArray, reduceArray) // [2, 4, 6]
+</code></pre></div><p>如果你对这个实现还有困惑的话，可以根据上一步的解析步骤来分析过程。</p></div> <div class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新时间: </span> <span class="time">2019/6/23 上午11:03:16</span></div></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/js/" class="prev router-link-active">
+          JS重点基础知识记录
+        </a></span> <span class="next"><a href="/js/js03.html">
+          JS异步相关
+        </a>
+        →
+      </span></p></div> <div class="bsa-cpc-wrapper"><div class="bsa-cpc"></div></div></div> <!----></div></div>
+    <script src="/assets/js/20.646646e8.js" defer></script><script src="/assets/js/app.6aa71e18.js" defer></script>
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?c3446600de53c605ba4f6c792e47dff9";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  </body>
+</html>

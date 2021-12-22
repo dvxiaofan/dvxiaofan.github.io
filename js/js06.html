@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JavaScript-作用域是什么 | WebCoder</title>
+    <meta name="description" content="Something Good Will Be Happen!">
+    <link rel="icon" href="/logo.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#3eaf7c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-152x152.png">
+  <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#3eaf7c">
+  <meta name="msapplication-TileImage" content="/icons/msapplication-icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/assets/css/0.styles.e9601a0f.css" as="style"><link rel="preload" href="/assets/js/app.6aa71e18.js" as="script"><link rel="preload" href="/assets/js/24.01d73bb3.js" as="script"><link rel="prefetch" href="/assets/js/2.0acebc94.js"><link rel="prefetch" href="/assets/js/3.a6860445.js"><link rel="prefetch" href="/assets/js/4.062059eb.js"><link rel="prefetch" href="/assets/js/5.c429bb8c.js"><link rel="prefetch" href="/assets/js/6.d128dc6e.js"><link rel="prefetch" href="/assets/js/7.cbba3ae8.js"><link rel="prefetch" href="/assets/js/8.3c6dc26f.js"><link rel="prefetch" href="/assets/js/9.cfd13805.js"><link rel="prefetch" href="/assets/js/10.e35277f4.js"><link rel="prefetch" href="/assets/js/11.705f9ff8.js"><link rel="prefetch" href="/assets/js/12.cb41ee43.js"><link rel="prefetch" href="/assets/js/13.41a18b7e.js"><link rel="prefetch" href="/assets/js/14.e3f76a17.js"><link rel="prefetch" href="/assets/js/15.e1f9e6a4.js"><link rel="prefetch" href="/assets/js/16.7b107a33.js"><link rel="prefetch" href="/assets/js/17.5c8b104d.js"><link rel="prefetch" href="/assets/js/18.af2929fc.js"><link rel="prefetch" href="/assets/js/19.b9785ceb.js"><link rel="prefetch" href="/assets/js/20.646646e8.js"><link rel="prefetch" href="/assets/js/21.ec6d4d4b.js"><link rel="prefetch" href="/assets/js/22.4ccec226.js"><link rel="prefetch" href="/assets/js/23.9937204e.js"><link rel="prefetch" href="/assets/js/25.da968f5d.js"><link rel="prefetch" href="/assets/js/26.b218202b.js"><link rel="prefetch" href="/assets/js/27.e1017f61.js"><link rel="prefetch" href="/assets/js/28.08b2495a.js"><link rel="prefetch" href="/assets/js/29.ef1026b4.js"><link rel="prefetch" href="/assets/js/30.cb8b0704.js"><link rel="prefetch" href="/assets/js/31.99c0e8a4.js"><link rel="prefetch" href="/assets/js/32.949d2f08.js"><link rel="prefetch" href="/assets/js/33.ef14c555.js"><link rel="prefetch" href="/assets/js/34.5d0aff86.js"><link rel="prefetch" href="/assets/js/35.7946d01d.js"><link rel="prefetch" href="/assets/js/36.a2ec7073.js"><link rel="prefetch" href="/assets/js/37.d822e6ba.js"><link rel="prefetch" href="/assets/js/38.4eaedf76.js"><link rel="prefetch" href="/assets/js/39.1dfd2114.js"><link rel="prefetch" href="/assets/js/40.8c86d158.js"><link rel="prefetch" href="/assets/js/41.40f73d3f.js"><link rel="prefetch" href="/assets/js/42.bc9d61d5.js"><link rel="prefetch" href="/assets/js/43.6904307b.js"><link rel="prefetch" href="/assets/js/44.f649f7a2.js"><link rel="prefetch" href="/assets/js/45.710693b4.js"><link rel="prefetch" href="/assets/js/46.4b2e8ff4.js"><link rel="prefetch" href="/assets/js/47.5fa2d420.js"><link rel="prefetch" href="/assets/js/48.772d62a6.js"><link rel="prefetch" href="/assets/js/49.6d3f5d32.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e9601a0f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">WebCoder</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">FrontEnd</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/js/" class="nav-link router-link-active">JS</a></li><li class="dropdown-item"><!----> <a href="/css/" class="nav-link">CSS</a></li><li class="dropdown-item"><!----> <a href="/react/" class="nav-link">React</a></li><li class="dropdown-item"><!----> <a href="/vue/" class="nav-link">Vue</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Tool</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/echarts/" class="nav-link">Echarts</a></li></ul></div></div><div class="nav-item"><a href="/other/" class="nav-link">Others</a></div><div class="nav-item"><a href="/about/" class="nav-link">About</a></div> <a href="https://github.com/dvxiaofan" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">FrontEnd</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/js/" class="nav-link router-link-active">JS</a></li><li class="dropdown-item"><!----> <a href="/css/" class="nav-link">CSS</a></li><li class="dropdown-item"><!----> <a href="/react/" class="nav-link">React</a></li><li class="dropdown-item"><!----> <a href="/vue/" class="nav-link">Vue</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Tool</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/echarts/" class="nav-link">Echarts</a></li></ul></div></div><div class="nav-item"><a href="/other/" class="nav-link">Others</a></div><div class="nav-item"><a href="/about/" class="nav-link">About</a></div> <a href="https://github.com/dvxiaofan" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav> <div class="carbon-ads"></div> <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>JavaScript</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/js/" class="sidebar-link">JS重点基础知识记录</a></li><li><a href="/js/js02.html" class="sidebar-link">ES6部分知识点总结</a></li><li><a href="/js/js03.html" class="sidebar-link">JS异步相关</a></li><li><a href="/js/js04.html" class="sidebar-link">手写Promise</a></li><li><a href="/js/js05.html" class="sidebar-link">Event Loop</a></li><li><a href="/js/js06.html" class="active sidebar-link">JavaScript-作用域是什么</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/js/js06.html#理解作用域" class="sidebar-link">理解作用域</a></li><li class="sidebar-sub-header"><a href="/js/js06.html#作用域嵌套" class="sidebar-link">作用域嵌套</a></li><li class="sidebar-sub-header"><a href="/js/js06.html#词法作用域" class="sidebar-link">词法作用域</a></li><li class="sidebar-sub-header"><a href="/js/js06.html#函数作用域和块作用域" class="sidebar-link">函数作用域和块作用域</a></li><li class="sidebar-sub-header"><a href="/js/js06.html#提升" class="sidebar-link">提升</a></li><li class="sidebar-sub-header"><a href="/js/js06.html#作用域闭包" class="sidebar-link">作用域闭包</a></li></ul></li><li><a href="/js/fileSave.html" class="sidebar-link">使用FileSaver.js把base64数据转成表格并下载</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="javascript-作用域是什么"><a href="#javascript-作用域是什么" aria-hidden="true" class="header-anchor">#</a> JavaScript-作用域是什么</h1> <h2 id="理解作用域"><a href="#理解作用域" aria-hidden="true" class="header-anchor">#</a> 理解作用域</h2> <ul><li>引擎
+<ul><li>从头到尾负责整个JavaScript程序的编译和执行过程</li></ul></li> <li>编译器
+<ul><li>负责语法分析及代码生成</li></ul></li> <li>作用域
+<ul><li>负责收集并维护由所有声明的标识符（变量）组成的一系列查询，并实施一套非常严格的规则，确定当前执行的代码对这些标识符有访问权限。</li></ul></li></ul> <p><img src="http://imgs.devzhangjs.com/15522056452246.jpg" alt></p> <h2 id="作用域嵌套"><a href="#作用域嵌套" aria-hidden="true" class="header-anchor">#</a> 作用域嵌套</h2> <p>当一个块或者函数嵌套在另一个函数或函数中时，就发生了作用域嵌套。</p> <p>遍历嵌套作用域规则：引擎从当前的执行作用域开始查找变量，如果找不到，就向上一级继续查找。直到抵达最外层的全局作用域， 无论找到还是没找到，查找过程都会停止。</p> <h3 id="小结"><a href="#小结" aria-hidden="true" class="header-anchor">#</a> 小结</h3> <p>作用域是一套规则，用于确定在何处以及如何查找变量（标志符）。
+如果查找目的是对变量进行赋值，就是执行LHS查询
+如果查找目的是获取变量的值，就是执行RHS查询</p> <h2 id="词法作用域"><a href="#词法作用域" aria-hidden="true" class="header-anchor">#</a> 词法作用域</h2> <p>作用域主要两种工作模式：词法作用域和动态作用域</p> <h3 id="词法阶段"><a href="#词法阶段" aria-hidden="true" class="header-anchor">#</a> 词法阶段</h3> <ul><li>大部分标准语言编译器的第一个工作阶段叫做词法化（也叫单词化）。</li> <li>简单的说， 词法作用域就是定义在词法阶段的作用域。换句话说，词法作用域是由你在写代码的时候将变量和块作用域写在哪里来决定的，因此当词法分析器处理代码时会保持作用域不变。</li> <li>作用域查找会在找到第一个匹配的标识符时停止。在多层的嵌套作用域中可以定义同名的标识符，叫做“遮蔽效应”</li> <li>作用域查找始终是从运行时所处的最内部作用域开始，逐级向外或者向上查找， 知道遇见第一个匹配的标识符为止。</li> <li>全局变量会自动成为全局对象（例如浏览器中的window对象）的属性，因此可以不直接通过全局对象的词法名称， 而是间接的通过对全局对象属性的引用来对其进行访问。
+例如<code>window.a</code>。通过这种技术可以访问那些被同名变量锁遮蔽的全局变量。但非全局变量如果被遮蔽了，无论如何都无法被访问到。</li> <li>无论函数在哪里被调用，也无论它如何被调用，它的词法作用域都只由函数被声明时所处的位置决定。</li></ul> <h3 id="小结-2"><a href="#小结-2" aria-hidden="true" class="header-anchor">#</a> 小结</h3> <p>词法作用域意味着作用域是由代码书写时候函数声明的位置来决定的。</p> <h2 id="函数作用域和块作用域"><a href="#函数作用域和块作用域" aria-hidden="true" class="header-anchor">#</a> 函数作用域和块作用域</h2> <h3 id="函数中的作用域"><a href="#函数中的作用域" aria-hidden="true" class="header-anchor">#</a> 函数中的作用域</h3> <p>函数作用域是指，属于这个函数的全部变量都可以在整个函数的范围内使用以及复用（事实上在嵌套的作用域中也可以使用）。</p> <h3 id="隐藏内部实现"><a href="#隐藏内部实现" aria-hidden="true" class="header-anchor">#</a> 隐藏内部实现</h3> <p>不应该这样：</p> <div class="language- extra-class"><pre class="language-text"><code>function doSomething(a) {
+ b = a + doSomethingElse(a * 2);
+
+ console.log(b * 3);
+}
+
+function doSomethingElse(a) {
+ return a - 1;
+}
+
+var b;
+
+doSomething(2);
+</code></pre></div><p>而是应该这样， 隐藏变量：</p> <div class="language- extra-class"><pre class="language-text"><code>function doSomething(a) {
+ function doSomethingElse(a) {
+   return a - 1;
+ }
+ var b;
+
+ b = a + doSomethingElse(a * 2);
+
+ console.log(b * 3);
+}
+
+doSomething(2);
+</code></pre></div><h4 id="规避冲突"><a href="#规避冲突" aria-hidden="true" class="header-anchor">#</a> 规避冲突</h4> <p>“隐藏”作用域中的变量和函数所带来的另一个好处，是可以避免同名标识符之间的冲突，两个标识符可能具有相同的名字但是用途却不一样，无意间可能造成命名冲突。 冲突会导致变量的值被意外覆盖。</p> <h3 id="函数作用域"><a href="#函数作用域" aria-hidden="true" class="header-anchor">#</a> 函数作用域</h3> <h4 id="匿名和具名"><a href="#匿名和具名" aria-hidden="true" class="header-anchor">#</a> 匿名和具名</h4> <p>例如如下函数：</p> <div class="language- extra-class"><pre class="language-text"><code>setTimeout(function() {
+ console.log('I waited 1 second');
+ 
+}, 1000);
+</code></pre></div><p>这叫做匿名函数表达式。
+匿名函数表达式书写起来简单快捷，但是有几个缺点：</p> <ol><li>匿名函数在栈追踪中不会显示出有意义的函数名，使得调试很困难</li> <li>如果没有函数名，当函数需要引用自身时只能使用已经过期的<code>arguments.callee</code>引用。</li> <li>匿名函数省略了对于代码可读性/可理解性很重要的函数名。</li></ol> <p>行内函数表达式非常强大且有用----匿名和具名之间的区别并不会对这一点有任何影响。给函数表达式指定一个函数名可以有效解决以上问题。所以，最好始终给函数表达式命名。</p> <div class="language- extra-class"><pre class="language-text"><code>setTimeout(function timeoutHandler() { // 有名字了
+  console.log('I waited 1 second');
+  
+}, 1000);
+</code></pre></div><h4 id="立即执行函数表达式"><a href="#立即执行函数表达式" aria-hidden="true" class="header-anchor">#</a> 立即执行函数表达式</h4> <p><code>(function(){})()</code> 和 <code>(function(){}())</code></p> <h2 id="提升"><a href="#提升" aria-hidden="true" class="header-anchor">#</a> 提升</h2> <ul><li>函数会首先别提升，然后才是变量。</li> <li>出现在后面的函数声明还是可以覆盖前面的。</li> <li>一个普通块内部的函数声明通常会被提升到所在作用域的顶部。</li></ul> <h3 id="总结"><a href="#总结" aria-hidden="true" class="header-anchor">#</a> 总结</h3> <ul><li>所有的声明（变量和函数）都会被“移动”到各自作用域的最顶端， 这个过程被称为 提升。</li> <li>声明本身会被提升，而包含函数表达式的赋值在内的赋值操作并不会被提升。</li> <li>要注意避免重复声明，特别是当普通的var声明和函数声明混合在一起的时候， 否则会引起很多危险的问题。</li></ul> <h2 id="作用域闭包"><a href="#作用域闭包" aria-hidden="true" class="header-anchor">#</a> 作用域闭包</h2> <h3 id="定义"><a href="#定义" aria-hidden="true" class="header-anchor">#</a> 定义</h3> <p>当函数可以记住并访问所在的词法作用域时，就产生了闭包，即使函数是在所在词法作用域以外被执行，这个引用，就叫做闭包。</p> <ul><li>无论通过何种手段将内部函数传递到所在词法作用域以外，它都会持有对原始定义作用域的引用，无论在何处执行这个函数都会使用闭包</li> <li>本质上讲，无论何时何地，如果将函数当作第一级的值类型并到处传递，你就会看到闭包在这些函数中的应用。</li> <li>例如在一些定时器、事件监听器、Ajax请求等，只要使用了回调函数，实际上就是在使用闭包</li></ul> <h3 id="循环和闭包"><a href="#循环和闭包" aria-hidden="true" class="header-anchor">#</a> 循环和闭包</h3> <ul><li>let声明可以用来劫持块作用域，并且在这个作用域中声明一个变量。</li> <li>for循环头部的let声明还会有一个特殊的行为。这个行为指出变量在循环过程中不止被声明一次，每次迭代都会声明。随后每个迭代都会使用上一个迭代结束时的值来初始化这个变量。</li></ul> <h3 id="模块"><a href="#模块" aria-hidden="true" class="header-anchor">#</a> 模块</h3> <p>模块模式需要具备两个必要条件：</p> <ol><li>必须有外部的封闭函数，该函数必须至少别调用一次（每次调用都会创建一个新的模块实例）</li> <li>封闭函数必须返回至少一个内部函数，这样内部函数才能在私有作用域中形成闭包，并且可以访问或者修改私有得状态。</li></ol> <p>一个具有函数属性的对系那个本身并不是真正的模块。从方便观察的角度看，一个从函数调用锁返回的，只有数据属性而没有闭包函数得对象并不是真正的模块。</p> <h3 id="现代的模块机制"><a href="#现代的模块机制" aria-hidden="true" class="header-anchor">#</a> 现代的模块机制</h3> <p>大多数模块依赖加载器/管理器本质上都是将这种模块定义封装进一个友好的API。</p> <div class="language- extra-class"><pre class="language-text"><code>var MyModules = (function Manager() {
+  var modules = {};
+
+  function define(name, deps, impl) {
+    for (var i = 0; i &lt; deps.length; i++) {
+      deps[i] = modules[deps[i]];
+    }
+    modules[name] = impl.apply(impl, deps);
+  }
+
+  function get(name) {
+    return modules[name];
+  }
+
+  return {
+    define: define,
+    get: get
+  };
+})();
+
+MyModules.define('bar', [], function() {
+  function hello(who) {
+    return 'let me introduce: ' + who;
+  }
+
+  return {
+    hello: hello
+  };
+});
+
+MyModules.define('foo', ['bar'], function(bar) {
+  var hungry = 'xiaofan';
+
+  function awesome() {
+    console.log(bar.hello(hungry).toUpperCase());
+  }
+
+  return {
+    awesome: awesome
+  };
+});
+
+var bar = MyModules.get('bar');
+var foo = MyModules.get('foo');
+
+console.log(bar.hello('xiaofan'));
+
+foo.awesome();
+</code></pre></div><p><code>foo</code>和<code>bar</code>模块都是通过一个返回公共API的函数来定义的。foo甚至接受bar的实例作为依赖参数，并能响相应的使用它。</p> <h3 id="总结-2"><a href="#总结-2" aria-hidden="true" class="header-anchor">#</a> 总结</h3> <p>当函数可以记住并访问所在的词法作用域，即使函数是在当前词法作用域以外执行，这时就产生了闭包。</p> <p>模块有两个主要特征：</p> <ol><li>为创建内部作用域而调用了一个包装函数</li> <li>包装函数的返回值必须包含至少一个对内部函数的引用，这样就会创建涵盖整个包装函数内部作用域的闭包</li></ol></div> <div class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新时间: </span> <span class="time">2019/6/23 上午11:03:16</span></div></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/js/js05.html" class="prev">
+          Event Loop
+        </a></span> <span class="next"><a href="/js/fileSave.html">
+          使用FileSaver.js把base64数据转成表格并下载
+        </a>
+        →
+      </span></p></div> <div class="bsa-cpc-wrapper"><div class="bsa-cpc"></div></div></div> <!----></div></div>
+    <script src="/assets/js/24.01d73bb3.js" defer></script><script src="/assets/js/app.6aa71e18.js" defer></script>
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?c3446600de53c605ba4f6c792e47dff9";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  </body>
+</html>

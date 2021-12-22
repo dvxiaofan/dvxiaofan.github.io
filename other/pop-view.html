@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>动态的给容器添加蒙版效果的弹出层 | WebCoder</title>
+    <meta name="description" content="Something Good Will Be Happen!">
+    <link rel="icon" href="/logo.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#3eaf7c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-152x152.png">
+  <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#3eaf7c">
+  <meta name="msapplication-TileImage" content="/icons/msapplication-icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/assets/css/0.styles.e9601a0f.css" as="style"><link rel="preload" href="/assets/js/app.6aa71e18.js" as="script"><link rel="preload" href="/assets/js/34.5d0aff86.js" as="script"><link rel="prefetch" href="/assets/js/2.0acebc94.js"><link rel="prefetch" href="/assets/js/3.a6860445.js"><link rel="prefetch" href="/assets/js/4.062059eb.js"><link rel="prefetch" href="/assets/js/5.c429bb8c.js"><link rel="prefetch" href="/assets/js/6.d128dc6e.js"><link rel="prefetch" href="/assets/js/7.cbba3ae8.js"><link rel="prefetch" href="/assets/js/8.3c6dc26f.js"><link rel="prefetch" href="/assets/js/9.cfd13805.js"><link rel="prefetch" href="/assets/js/10.e35277f4.js"><link rel="prefetch" href="/assets/js/11.705f9ff8.js"><link rel="prefetch" href="/assets/js/12.cb41ee43.js"><link rel="prefetch" href="/assets/js/13.41a18b7e.js"><link rel="prefetch" href="/assets/js/14.e3f76a17.js"><link rel="prefetch" href="/assets/js/15.e1f9e6a4.js"><link rel="prefetch" href="/assets/js/16.7b107a33.js"><link rel="prefetch" href="/assets/js/17.5c8b104d.js"><link rel="prefetch" href="/assets/js/18.af2929fc.js"><link rel="prefetch" href="/assets/js/19.b9785ceb.js"><link rel="prefetch" href="/assets/js/20.646646e8.js"><link rel="prefetch" href="/assets/js/21.ec6d4d4b.js"><link rel="prefetch" href="/assets/js/22.4ccec226.js"><link rel="prefetch" href="/assets/js/23.9937204e.js"><link rel="prefetch" href="/assets/js/24.01d73bb3.js"><link rel="prefetch" href="/assets/js/25.da968f5d.js"><link rel="prefetch" href="/assets/js/26.b218202b.js"><link rel="prefetch" href="/assets/js/27.e1017f61.js"><link rel="prefetch" href="/assets/js/28.08b2495a.js"><link rel="prefetch" href="/assets/js/29.ef1026b4.js"><link rel="prefetch" href="/assets/js/30.cb8b0704.js"><link rel="prefetch" href="/assets/js/31.99c0e8a4.js"><link rel="prefetch" href="/assets/js/32.949d2f08.js"><link rel="prefetch" href="/assets/js/33.ef14c555.js"><link rel="prefetch" href="/assets/js/35.7946d01d.js"><link rel="prefetch" href="/assets/js/36.a2ec7073.js"><link rel="prefetch" href="/assets/js/37.d822e6ba.js"><link rel="prefetch" href="/assets/js/38.4eaedf76.js"><link rel="prefetch" href="/assets/js/39.1dfd2114.js"><link rel="prefetch" href="/assets/js/40.8c86d158.js"><link rel="prefetch" href="/assets/js/41.40f73d3f.js"><link rel="prefetch" href="/assets/js/42.bc9d61d5.js"><link rel="prefetch" href="/assets/js/43.6904307b.js"><link rel="prefetch" href="/assets/js/44.f649f7a2.js"><link rel="prefetch" href="/assets/js/45.710693b4.js"><link rel="prefetch" href="/assets/js/46.4b2e8ff4.js"><link rel="prefetch" href="/assets/js/47.5fa2d420.js"><link rel="prefetch" href="/assets/js/48.772d62a6.js"><link rel="prefetch" href="/assets/js/49.6d3f5d32.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e9601a0f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">WebCoder</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">FrontEnd</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/js/" class="nav-link">JS</a></li><li class="dropdown-item"><!----> <a href="/css/" class="nav-link">CSS</a></li><li class="dropdown-item"><!----> <a href="/react/" class="nav-link">React</a></li><li class="dropdown-item"><!----> <a href="/vue/" class="nav-link">Vue</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Tool</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/echarts/" class="nav-link">Echarts</a></li></ul></div></div><div class="nav-item"><a href="/other/" class="nav-link router-link-active">Others</a></div><div class="nav-item"><a href="/about/" class="nav-link">About</a></div> <a href="https://github.com/dvxiaofan" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">FrontEnd</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/js/" class="nav-link">JS</a></li><li class="dropdown-item"><!----> <a href="/css/" class="nav-link">CSS</a></li><li class="dropdown-item"><!----> <a href="/react/" class="nav-link">React</a></li><li class="dropdown-item"><!----> <a href="/vue/" class="nav-link">Vue</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Tool</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/echarts/" class="nav-link">Echarts</a></li></ul></div></div><div class="nav-item"><a href="/other/" class="nav-link router-link-active">Others</a></div><div class="nav-item"><a href="/about/" class="nav-link">About</a></div> <a href="https://github.com/dvxiaofan" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav> <div class="carbon-ads"></div> <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>Others</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/other/" class="sidebar-link">在Mac终端显示 Git 当前所在分支</a></li><li><a href="/other/nvm.html" class="sidebar-link">nvm: Mac下的 node 版本管理工具</a></li><li><a href="/other/emock.html" class="sidebar-link">用 Easy Mock 模拟伪造服务器数据进行开发调试</a></li><li><a href="/other/mockjs.html" class="sidebar-link">利用Mock.js本地批量生成模拟JSON数据</a></li><li><a href="/other/git-nums.html" class="sidebar-link">查看git代码提交行数</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="动态的给容器添加蒙版效果的弹出层"><a href="#动态的给容器添加蒙版效果的弹出层" aria-hidden="true" class="header-anchor">#</a> 动态的给容器添加蒙版效果的弹出层</h1> <h3 id="创建测试html-结构"><a href="#创建测试html-结构" aria-hidden="true" class="header-anchor">#</a> 创建测试HTML 结构</h3> <div class="language- extra-class"><pre class="language-text"><code>&lt;div class=&quot;content&quot;&gt;
+	&lt;div class=&quot;btn-content&quot;&gt;
+		&lt;button class=&quot;show-btn&quot; onclick=&quot;showPopView()&quot;&gt;显示蒙版&lt;/button&gt;
+		&lt;button class=&quot;hide-btn&quot; onclick=&quot;hidePopView()&quot;&gt;隐藏蒙版&lt;/button&gt;
+	&lt;/div&gt;
+
+	&lt;div class=&quot;view-content&quot;&gt;
+		&lt;div class=&quot;pop-view&quot; id=&quot;pop_view&quot;&gt;&lt;/div&gt;
+
+		&lt;div class=&quot;input-view&quot;&gt;
+			&lt;div&gt;
+				&lt;label&gt;
+					&lt;input type=&quot;text&quot; class=&quot;demo&quot; placeholder=&quot;在这里输入内容&quot;&gt;
+				&lt;/label&gt;
+			&lt;/div&gt;
+			&lt;div&gt;
+				&lt;label&gt;
+					&lt;input type=&quot;text&quot; class=&quot;demo&quot; placeholder=&quot;在这里输入内容&quot;&gt;
+				&lt;/label&gt;
+			&lt;/div&gt;
+			&lt;div&gt;
+				&lt;label&gt;
+					&lt;input type=&quot;text&quot; class=&quot;demo&quot; placeholder=&quot;在这里输入内容&quot;&gt;
+				&lt;/label&gt;
+			&lt;/div&gt;
+
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+&lt;/div&gt;
+
+</code></pre></div><h3 id="css-样式编写"><a href="#css-样式编写" aria-hidden="true" class="header-anchor">#</a> CSS 样式编写</h3> <div class="language- extra-class"><pre class="language-text"><code>.content {
+	width: 800px;
+	height: 600px;
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+}
+
+.btn-content {
+	height: 50px;
+	line-height: 50px;
+}
+	
+.view-content {
+	position: absolute;
+	top: 50px;
+	width: 100%;
+	height: 100%;
+}
+
+.input-view {
+	width: 100%;
+	height: 100%;
+}
+
+.pop-view {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	opacity: 0.5;
+	width: 100%;
+	height: 100%;
+	background-color: #999;
+	filter: alpha(opacity=50);
+	display: none;
+}
+</code></pre></div><h3 id="实现-js-切换方法"><a href="#实现-js-切换方法" aria-hidden="true" class="header-anchor">#</a> 实现 JS 切换方法</h3> <div class="language- extra-class"><pre class="language-text"><code>function showPopView() {
+	let popView = document.getElementById('pop_view');
+	popView.style.display = 'block';
+}
+
+function hidePopView() {
+	let popView = document.getElementById('pop_view');
+	popView.style.display = 'none';
+}
+</code></pre></div><h3 id="初始隐藏蒙版的效果"><a href="#初始隐藏蒙版的效果" aria-hidden="true" class="header-anchor">#</a> 初始隐藏蒙版的效果</h3> <p><img src="http://ww1.sinaimg.cn/large/6b65559dgy1g4a9zsn7hkj20qi0l1dgh.jpg" alt="可以编辑输入框文字"></p> <h3 id="显示蒙版后的效果"><a href="#显示蒙版后的效果" aria-hidden="true" class="header-anchor">#</a> 显示蒙版后的效果</h3> <p><img src="http://ww1.sinaimg.cn/large/6b65559dgy1g4a9zsq7abj20p20kb3yz.jpg" alt="不可编辑输入框文字"></p></div> <div class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新时间: </span> <span class="time">2019/6/23 上午10:52:53</span></div></div> <!----> <div class="bsa-cpc-wrapper"><div class="bsa-cpc"></div></div></div> <!----></div></div>
+    <script src="/assets/js/34.5d0aff86.js" defer></script><script src="/assets/js/app.6aa71e18.js" defer></script>
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?c3446600de53c605ba4f6c792e47dff9";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  </body>
+</html>
