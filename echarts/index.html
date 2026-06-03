@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.26" />
+    <style>
+      :root {
+        --vp-c-bg: #fff;
+      }
+
+      [data-theme='dark'] {
+        --vp-c-bg: #1b1b1f;
+      }
+
+      html,
+      body {
+        background-color: var(--vp-c-bg);
+      }
+    </style>
+    <script>
+      const useChoice = localStorage.getItem('vuepress-color-scheme')
+      const systemStatus =
+        'matchMedia' in window
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : false
+
+      if (useChoice === 'light') {
+        document.documentElement.dataset.theme = 'light'
+      } else if (useChoice === 'dark' || systemStatus) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
+    <link rel="icon" href="/logo.png"><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#3eaf7c"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="apple-touch-icon" href="/icons/apple-touch-icon-152x152.png"><link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#3eaf7c"><meta name="msapplication-TileImage" content="/icons/msapplication-icon-144x144.png"><meta name="msapplication-TileColor" content="#000000"><meta name="application-name" content="WebCoder"><meta name="mobile-web-app-capable" content="yes"><title>用Echarts动态显示两组数据图形 | WebCoder</title><meta name="description" content="Something Good Will Be Happen!">
+    <link rel="preload" href="/assets/style-BnUGPQPD.css" as="style"><link rel="stylesheet" href="/assets/style-BnUGPQPD.css">
+    <link rel="modulepreload" href="/assets/app-DRFRIiL9.js"><link rel="modulepreload" href="/assets/index.html-DIc1iZp1.js">
+    <link rel="prefetch" href="/assets/index.html-CjTE0XnY.js" as="script"><link rel="prefetch" href="/assets/index.html-ClpAyAsf.js" as="script"><link rel="prefetch" href="/assets/index.html-BG3-XoxQ.js" as="script"><link rel="prefetch" href="/assets/02.html-B6G7Hf2I.js" as="script"><link rel="prefetch" href="/assets/index.html-CKpiCPIz.js" as="script"><link rel="prefetch" href="/assets/css02.html-BYBXCof3.js" as="script"><link rel="prefetch" href="/assets/02.html-npO95Pz2.js" as="script"><link rel="prefetch" href="/assets/index.html-Cx0GqSLb.js" as="script"><link rel="prefetch" href="/assets/index.html-YMDmm2vU.js" as="script"><link rel="prefetch" href="/assets/index.html-Cw1aCWwR.js" as="script"><link rel="prefetch" href="/assets/fileSave.html-Dnv05Lpj.js" as="script"><link rel="prefetch" href="/assets/js02.html-Bkh6xqhe.js" as="script"><link rel="prefetch" href="/assets/js03.html-Bt8tIozd.js" as="script"><link rel="prefetch" href="/assets/js04.html-Bw4tGwf-.js" as="script"><link rel="prefetch" href="/assets/js05.html-BQveppZN.js" as="script"><link rel="prefetch" href="/assets/js06.html--RoMNP4i.js" as="script"><link rel="prefetch" href="/assets/index.html-BjexSdd7.js" as="script"><link rel="prefetch" href="/assets/life01.html-CHof2Coq.js" as="script"><link rel="prefetch" href="/assets/life02.html-CToOpz3U.js" as="script"><link rel="prefetch" href="/assets/index.html-D278eGvO.js" as="script"><link rel="prefetch" href="/assets/emock.html-C8OXpxsz.js" as="script"><link rel="prefetch" href="/assets/git-nums.html-DyzeMchj.js" as="script"><link rel="prefetch" href="/assets/llm-news-2026-06-03.html-DW4CT46B.js" as="script"><link rel="prefetch" href="/assets/mockjs.html-CYfD8e_q.js" as="script"><link rel="prefetch" href="/assets/nvm.html-BQC95drJ.js" as="script"><link rel="prefetch" href="/assets/pop-view.html-BCE8aM42.js" as="script"><link rel="prefetch" href="/assets/02.html-wr5FvN-0.js" as="script"><link rel="prefetch" href="/assets/index.html-pxltH-CH.js" as="script"><link rel="prefetch" href="/assets/React-setState.html-B2VYeXw7.js" as="script"><link rel="prefetch" href="/assets/react-webpack.html-d1rZon6v.js" as="script"><link rel="prefetch" href="/assets/something-about-react.html-txTOtDOi.js" as="script"><link rel="prefetch" href="/assets/index.html-D-jvw4VJ.js" as="script"><link rel="prefetch" href="/assets/file-time.html-BS9K2qvX.js" as="script"><link rel="prefetch" href="/assets/input-number.html-qBD67ikC.js" as="script"><link rel="prefetch" href="/assets/lifecycle.html-PiNfQyev.js" as="script"><link rel="prefetch" href="/assets/vue-computed.html-CAa6BrTa.js" as="script"><link rel="prefetch" href="/assets/vue-demo01.html-DNh2VcMB.js" as="script"><link rel="prefetch" href="/assets/vue-demo02.html-CpEC8tDg.js" as="script"><link rel="prefetch" href="/assets/vue-gowhere-01.html-CtCiaU1O.js" as="script"><link rel="prefetch" href="/assets/vue-props.html-DEnELnRN.js" as="script"><link rel="prefetch" href="/assets/index.html-DefuKD53.js" as="script"><link rel="prefetch" href="/assets/07-Event Loop.html-Dl_j9fEb.js" as="script"><link rel="prefetch" href="/assets/404.html-B5PmXE9s.js" as="script"><link rel="prefetch" href="/assets/index-DTEEl-sV.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="vp-theme-container external-link-icon" vp-container><!--[--><header class="vp-navbar" vp-navbar><div class="vp-toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a class="route-link" href="/"><!----><span class="vp-site-name" aria-hidden="true">WebCoder</span></a></span><div class="vp-navbar-items-wrapper" style=""><!--[--><!--]--><nav class="vp-navbar-items vp-hide-mobile" aria-label="site navigation"><!--[--><div class="vp-navbar-item"><div class="vp-navbar-dropdown-wrapper"><button class="vp-navbar-dropdown-title" type="button" aria-label="FrontEnd"><span class="title">FrontEnd</span><span class="arrow down"></span></button><button class="vp-navbar-dropdown-title-mobile" type="button" aria-label="FrontEnd"><span class="title">FrontEnd</span><span class="right arrow"></span></button><ul class="vp-navbar-dropdown" style="display:none;"><!--[--><li class="vp-navbar-dropdown-item"><a class="route-link auto-link" href="/js/" aria-label="JS"><!--[--><!--[--><!--]--><!--]-->JS<!--[--><!--[--><!--]--><!--]--></a></li><li class="vp-navbar-dropdown-item"><a class="route-link auto-link" href="/css/" aria-label="CSS"><!--[--><!--[--><!--]--><!--]-->CSS<!--[--><!--[--><!--]--><!--]--></a></li><li class="vp-navbar-dropdown-item"><a class="route-link auto-link" href="/react/" aria-label="React"><!--[--><!--[--><!--]--><!--]-->React<!--[--><!--[--><!--]--><!--]--></a></li><li class="vp-navbar-dropdown-item"><a class="route-link auto-link" href="/vue/" aria-label="Vue"><!--[--><!--[--><!--]--><!--]-->Vue<!--[--><!--[--><!--]--><!--]--></a></li><!--]--></ul></div></div><div class="vp-navbar-item"><div class="vp-navbar-dropdown-wrapper"><button class="vp-navbar-dropdown-title" type="button" aria-label="Tool"><span class="title">Tool</span><span class="arrow down"></span></button><button class="vp-navbar-dropdown-title-mobile" type="button" aria-label="Tool"><span class="title">Tool</span><span class="right arrow"></span></button><ul class="vp-navbar-dropdown" style="display:none;"><!--[--><li class="vp-navbar-dropdown-item"><a class="route-link route-link-active auto-link" href="/echarts/" aria-label="Echarts"><!--[--><!--[--><!--]--><!--]-->Echarts<!--[--><!--[--><!--]--><!--]--></a></li><!--]--></ul></div></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/other/" aria-label="Others"><!--[--><!--[--><!--]--><!--]-->Others<!--[--><!--[--><!--]--><!--]--></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/about/" aria-label="About"><!--[--><!--[--><!--]--><!--]-->About<!--[--><!--[--><!--]--><!--]--></a></div><div class="vp-navbar-item"><a class="auto-link external-link" href="https://github.com/dvxiaofan/MyBlog" aria-label="GitHub" rel="noopener noreferrer" target="_blank"><!--[--><!--[--><!--]--><!--]-->GitHub<!--[--><!--[--><!--]--><!--]--></a></div><!--]--></nav><!--[--><!--]--><button type="button" class="vp-toggle-color-mode-button" title="toggle color mode"><svg class="light-icon" viewbox="0 0 32 32" style=""><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg class="dark-icon" viewbox="0 0 32 32" style="display:none;"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><form class="search-box" role="search"><input type="search" placeholder="搜索" autocomplete="off" spellcheck="false" value><!----></form></div></header><!--]--><div class="vp-sidebar-mask"></div><!--[--><aside class="vp-sidebar" vp-sidebar><nav class="vp-navbar-items" aria-label="site navigation"><!--[--><div class="vp-navbar-item"><div class="vp-navbar-dropdown-wrapper"><button class="vp-navbar-dropdown-title" type="button" aria-label="FrontEnd"><span class="title">FrontEnd</span><span class="arrow down"></span></button><button class="vp-navbar-dropdown-title-mobile" type="button" aria-label="FrontEnd"><span class="title">FrontEnd</span><span class="right arrow"></span></button><ul class="vp-navbar-dropdown" style="display:none;"><!--[--><li class="vp-navbar-dropdown-item"><a class="route-link auto-link" href="/js/" aria-label="JS"><!--[--><!--[--><!--]--><!--]-->JS<!--[--><!--[--><!--]--><!--]--></a></li><li class="vp-navbar-dropdown-item"><a class="route-link auto-link" href="/css/" aria-label="CSS"><!--[--><!--[--><!--]--><!--]-->CSS<!--[--><!--[--><!--]--><!--]--></a></li><li class="vp-navbar-dropdown-item"><a class="route-link auto-link" href="/react/" aria-label="React"><!--[--><!--[--><!--]--><!--]-->React<!--[--><!--[--><!--]--><!--]--></a></li><li class="vp-navbar-dropdown-item"><a class="route-link auto-link" href="/vue/" aria-label="Vue"><!--[--><!--[--><!--]--><!--]-->Vue<!--[--><!--[--><!--]--><!--]--></a></li><!--]--></ul></div></div><div class="vp-navbar-item"><div class="vp-navbar-dropdown-wrapper"><button class="vp-navbar-dropdown-title" type="button" aria-label="Tool"><span class="title">Tool</span><span class="arrow down"></span></button><button class="vp-navbar-dropdown-title-mobile" type="button" aria-label="Tool"><span class="title">Tool</span><span class="right arrow"></span></button><ul class="vp-navbar-dropdown" style="display:none;"><!--[--><li class="vp-navbar-dropdown-item"><a class="route-link route-link-active auto-link" href="/echarts/" aria-label="Echarts"><!--[--><!--[--><!--]--><!--]-->Echarts<!--[--><!--[--><!--]--><!--]--></a></li><!--]--></ul></div></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/other/" aria-label="Others"><!--[--><!--[--><!--]--><!--]-->Others<!--[--><!--[--><!--]--><!--]--></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/about/" aria-label="About"><!--[--><!--[--><!--]--><!--]-->About<!--[--><!--[--><!--]--><!--]--></a></div><div class="vp-navbar-item"><a class="auto-link external-link" href="https://github.com/dvxiaofan/MyBlog" aria-label="GitHub" rel="noopener noreferrer" target="_blank"><!--[--><!--[--><!--]--><!--]-->GitHub<!--[--><!--[--><!--]--><!--]--></a></div><!--]--></nav><!--[--><!--]--><ul class="vp-sidebar-items"><!--[--><li><p tabindex="0" class="vp-sidebar-item vp-sidebar-heading active">Echarts <!----></p><ul class="vp-sidebar-children" style=""><!--[--><li><a class="route-link route-link-active auto-link vp-sidebar-item active" href="/echarts/" aria-label="用Echarts动态显示两组数据图形"><!--[--><!--[--><!--]--><!--]-->用Echarts动态显示两组数据图形<!--[--><!--[--><!--]--><!--]--></a><!----></li><!--]--></ul></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="vp-page"><!--[--><!--]--><div vp-content><!--[--><!--]--><div id="content"><h1 id="用echarts动态显示两组数据图形" tabindex="-1"><a class="header-anchor" href="#用echarts动态显示两组数据图形"><span>用Echarts动态显示两组数据图形</span></a></h1><blockquote><p>最近公司项目需要用到实时数据显示, 所以就了解到了<code>Echarts</code>这个强大的工具, 使用中也遇到了好多坑, 记录一下, 希望也给需要的人提供帮助</p></blockquote><p>要在项目中使用<code>Echarts</code>, 首先需要在页面里引入, 你可以完全下载下来, 或者用<code>npm</code>之类的包管理工具, 或者直接引入<code>cdn</code>加速地址, 我这里用的后者</p><p>在html页面直接引入</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">&lt;script src=&quot;https://cdn.bootcss.com/echarts/4.2.0-rc.2/echarts.js&quot;&gt;&lt;/script&gt;</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><p>然后需要设着一个用来显示折线图的容器, 而且要有宽高</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">&lt;div id=&quot;main&quot; style=&quot;width: 600px; height: 500px;&quot;&gt;&lt;/div&gt;   </span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><p>接着在js文件里先实例化一个<code>echarts</code>对象出来</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">let myChart = echarts.init(document.getElementById(&#39;main&#39;));</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><p>为了显示效果, 我提供了一些测试数据</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">let now = new Date();</span>
+<span class="line">let datas = {</span>
+<span class="line">    upText: &#39;水位图形&#39;,</span>
+<span class="line">    upUnit: &#39;单位(m)&#39;,</span>
+<span class="line">    upName: &#39;水位&#39;,</span>
+<span class="line">	upMark: 2.3,		// 分界值</span>
+<span class="line">    upData: [&#39;1.139&#39;],</span>
+<span class="line">    downText: &#39;流量图形&#39;,</span>
+<span class="line">    downUnit: &#39;单位(m)&#39;,</span>
+<span class="line">    downName: &#39;水位&#39;,</span>
+<span class="line">	downMark: 3.5,</span>
+<span class="line">    downData: [&#39;5.473&#39;],</span>
+<span class="line">    date: [now.getHours() + &#39;:&#39; + now.getMinutes() + &#39;:&#39; + now.getSeconds()]</span>
+<span class="line">};</span>
+<span class="line"></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>然后就是设置配置信息--<code>option</code></p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">let option = {</span>
+<span class="line">	title: [{</span>
+<span class="line">		left: &#39;center&#39;,</span>
+<span class="line">		text: datas.upText</span>
+<span class="line">	}, {</span>
+<span class="line">		top: &#39;50%&#39;,				// 下面的折线图标题位置</span>
+<span class="line">		left: &#39;center&#39;,</span>
+<span class="line">		text: datas.downText</span>
+<span class="line">	}],</span>
+<span class="line">	tooltip: {</span>
+<span class="line">		trigger: &#39;axis&#39;			// 悬浮到折点时候的上线标记线</span>
+<span class="line">	},</span>
+<span class="line">	xAxis: [{</span>
+<span class="line">		boundaryGap: false,		// 默认为 true，此时刻度只是作为分隔线，标签和数据点都会在两个刻度之间的带(band)中间。</span>
+<span class="line">		data: datas.date</span>
+<span class="line">	}, {</span>
+<span class="line">		boundaryGap: false,</span>
+<span class="line">		data: datas.date,</span>
+<span class="line">		gridIndex: 1			// 下面的折线图索引, (上面的索引为0)</span>
+<span class="line">	}],</span>
+<span class="line">	yAxis: [{</span>
+<span class="line">		name: datas.upUnit,</span>
+<span class="line">		boundaryGap: [0, &#39;50%&#39;]</span>
+<span class="line">	}, {</span>
+<span class="line">		gridIndex: 1,</span>
+<span class="line">		name: datas.downUnit,</span>
+<span class="line">		boundaryGap: [0, &#39;50%&#39;]</span>
+<span class="line">	}],</span>
+<span class="line">	grid: [{</span>
+<span class="line">		bottom: &#39;60%&#39;</span>
+<span class="line">	}, {</span>
+<span class="line">		top: &#39;60%&#39;</span>
+<span class="line">	}],</span>
+<span class="line">	series: [{</span>
+<span class="line">		name: datas.upName,</span>
+<span class="line">		data:  datas.date,</span>
+<span class="line">		type: &#39;line&#39;,</span>
+<span class="line">		smooth: true,			// 是否为平滑曲线</span>
+<span class="line">		areaStyle: {			// 折现下是否填充</span>
+<span class="line">			normal: {}</span>
+<span class="line">        },  </span>
+<span class="line">		markLine: {				// 分界线线设置</span>
+<span class="line">			silent: true,		// 不响应鼠标点击事件</span>
+<span class="line">			lineStyle: {</span>
+<span class="line">				width: 2,</span>
+<span class="line">				color: &#39;#f00&#39;</span>
+<span class="line">			},</span>
+<span class="line">			data: [{</span>
+<span class="line">				yAxis: datas.upMark</span>
+<span class="line">			}]</span>
+<span class="line">		}</span>
+<span class="line">	}, {</span>
+<span class="line">		name: datas.downName,</span>
+<span class="line">		data:  datas.date,</span>
+<span class="line">		type: &#39;line&#39;,</span>
+<span class="line">		smooth: true,</span>
+<span class="line">        itemStyle : {  </span>
+<span class="line">            normal : {  </span>
+<span class="line">                borderColor:&#39;red&#39;	// 折线折点颜色</span>
+<span class="line">            }  </span>
+<span class="line">        },</span>
+<span class="line">		markLine: {</span>
+<span class="line">			silent: true,</span>
+<span class="line">			lineStyle: {</span>
+<span class="line">				width: 2,</span>
+<span class="line">				color: &#39;#f00&#39;</span>
+<span class="line">			},</span>
+<span class="line">			data: [{</span>
+<span class="line">				yAxis: datas.downMark</span>
+<span class="line">			}]</span>
+<span class="line">		},</span>
+<span class="line">		xAxisIndex: 1,</span>
+<span class="line">		yAxisIndex: 1</span>
+<span class="line">	}],</span>
+<span class="line">	visualMap: [{				// 视觉映射组件</span>
+<span class="line">		seriesIndex: 0,</span>
+<span class="line">		top: 20,</span>
+<span class="line">		right: 10,</span>
+<span class="line">		pieces: [{</span>
+<span class="line">			gt: 0,				// 开始值</span>
+<span class="line">			lte: datas.upMark,	// 结束值</span>
+<span class="line">			color: &#39;#0ff&#39;</span>
+<span class="line">		}],</span>
+<span class="line">		outOfRange: {			// 超出范围</span>
+<span class="line">			color: &#39;#f00&#39;</span>
+<span class="line">		},</span>
+<span class="line">	},{</span>
+<span class="line">		seriesIndex: 1,</span>
+<span class="line">		top: &#39;50%&#39;,</span>
+<span class="line">		right: 10,</span>
+<span class="line">		pieces: [{</span>
+<span class="line">			gt: 0,</span>
+<span class="line">			lte: datas.downMark,</span>
+<span class="line">			color: &#39;orange&#39;</span>
+<span class="line">		}],</span>
+<span class="line">		outOfRange: {</span>
+<span class="line">			color: &#39;#f00&#39;</span>
+<span class="line">		},</span>
+<span class="line">	}], </span>
+<span class="line">};</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote><p>有些地方是加了注释的, 因为一开始没搞明白怎么用, 在官方文档里 和 demo 里遨游了好久, 才弄明白各个设置的意思和用处, 文档是个好东西</p></blockquote><p>最后就是把<code>option</code>设置给 <code>echarts</code>实例, 是通过<code>setOption</code>来使用的:</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">myChart.setOption(option);</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><p>这个时候打开页面其实就能看到效果了</p><p><img src="http://imgs.webxiaofan.com/15476380595216.jpg" alt="只有一个数据"></p><p>目前只有一个数据值, 接着开始启动模拟加载数据</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">// 获取数据时间间隔 3秒</span>
+<span class="line">let INTERVAL_TIME = 3000;</span>
+<span class="line">// 模拟定时加载数据</span>
+<span class="line">setInterval(() =&gt; {</span>
+<span class="line">	// 最新时间</span>
+<span class="line">    let newDate = new Date();</span>
+<span class="line">	// 模拟获取数据</span>
+<span class="line">    datas.upData.push((Math.random() * 5).toFixed(3));</span>
+<span class="line">	datas.downData.push((Math.random() * 5).toFixed(3));</span>
+<span class="line">	// 按时间间隔设置时间</span>
+<span class="line">    datas.date.push(newDate.getHours() + &#39;:&#39; + newDate.getMinutes() + &#39;:&#39; + newDate.getSeconds())</span>
+<span class="line">	// 只取8个数据</span>
+<span class="line">    if (datas.upData.length &gt;= 8) {</span>
+<span class="line">        datas.upData.shift();</span>
+<span class="line">        datas.downData.shift();</span>
+<span class="line">        datas.date.shift();</span>
+<span class="line">    }</span>
+<span class="line">	// 设置最新数据给折线图</span>
+<span class="line">    myChart.setOption({</span>
+<span class="line">        xAxis: [{</span>
+<span class="line">            data: datas.date</span>
+<span class="line">        },{</span>
+<span class="line">            data:datas.date,</span>
+<span class="line">            gridIndex: 1</span>
+<span class="line">        }],</span>
+<span class="line">        series: [{</span>
+<span class="line">            data: datas.upData</span>
+<span class="line">        },{</span>
+<span class="line">            data: datas.downData,</span>
+<span class="line">            xAxisIndex: 1,</span>
+<span class="line">            yAxisIndex: 1</span>
+<span class="line">        }]</span>
+<span class="line">    })</span>
+<span class="line"></span>
+<span class="line">}, INTERVAL_TIME);</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在运行, 代码, 就能看到数据从1个变成最多8个, 并且能实时加载新数据并动态显示出来</p><p><img src="http://imgs.webxiaofan.com/15476381042709.jpg" alt="静态图"></p><p>同时也能看到分界线设置的效果(我这只是截图, 实际是动态显示的)</p><p>几点小提示:</p><ul><li>如果你需要切换数据源, 需要先清除原来的的定时器和<code>Echarts</code>实例, 否则数据会出现混乱, 这里的<code>timer</code>是我给项目里的定时器起的名字</li></ul><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">//  清除原有定时器</span>
+<span class="line">clearInterval(timer);</span>
+<span class="line"></span>
+<span class="line">//  如果echat实例存在</span>
+<span class="line">if (myChart != null &amp;&amp; myChart != &quot;&quot; &amp;&amp; myChart != undefined) {</span>
+<span class="line">      //  销毁实例</span>
+<span class="line">      myChart.dispose();</span>
+<span class="line"> }</span>
+<span class="line">//  基于准备好的dom，初始化echarts实例</span>
+<span class="line">myChart = echarts.init(document.getElementById(echartId))</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul><li>最好再调用它一下的<code>resize</code>方法, 原因看注释</li></ul><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">//  用于使chart自适应高度和宽度, 因为初始隐藏的标签在初始化图表的时候因为获取不到容器的实际高宽，可能会绘制失败</span>
+<span class="line">$(window).on(&#39;resize&#39;, function () {</span>
+<span class="line">     myChart.resize();</span>
+<span class="line"> });</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul><li>在会改变窗口大小的地方也调用一下<code>resize()</code>这个方法,以便能自适应.</li></ul><hr><p>以上来自我工作中的总结笔记, 希望对看到的人有所帮助</p><p>源码地址: <a href="https://github.com/dvxiaofan/EchartsDemo" target="_blank" rel="noopener noreferrer">GitHub</a> 也可以直接跳转---&gt;<a href="https://www.echartsjs.com/index.html" target="_blank" rel="noopener noreferrer">Echarts官网</a>查看更多使用技巧</p></div><!--[--><!--]--></div><footer class="vp-page-meta"><!----><div class="vp-meta-item git-info"><div class="vp-meta-item last-updated"><span class="meta-item-label">上次更新时间: </span><time class="meta-item-info" datetime="2019-06-23T03:03:16.000Z" data-allow-mismatch>2019/6/23 11:03</time></div><!----></div></footer><!----><!--[--><!--]--></main><!--]--></div><!--[--><!----><!----><!--]--><!--]--></div>
+    <script type="module" src="/assets/app-DRFRIiL9.js" defer></script>
+  </body>
+</html>
